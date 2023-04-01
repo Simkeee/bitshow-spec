@@ -11,7 +11,7 @@ function App() {
   const [shows, setShows] = useState([]);
 
   useEffect(() => {
-    fetch("http://api.tvmaze.com/shows")
+    fetch("https://api.tvmaze.com/shows")
       .then(res => res.json())
       .then(data => setShows(data))
   }, []);
