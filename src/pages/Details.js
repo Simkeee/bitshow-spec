@@ -11,7 +11,7 @@ function Details({ shows }) {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    fetch(`http://api.tvmaze.com/shows/${id}/cast`)
+    fetch(`https://api.tvmaze.com/shows/${id}/cast`)
       .then((res) => res.json())
       .then((data) => setCast(data));
   }, [id]);
