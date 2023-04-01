@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Styles.css"
 
@@ -12,7 +13,7 @@ function Header() {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav.Item>
-            <Nav.Link className='about' href="/about">About us</Nav.Link>
+            <Link className='about' to="/about">About us</Link>
           </Nav.Item>
         </Navbar.Collapse>
       </Container>
