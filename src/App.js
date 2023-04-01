@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter} from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Landing from "./pages/Landing";
+import Details from"./pages/Details";
+import About from"./pages/About";
+
+
 
 function App() {
+  const [shows, setShows] = useState([]);
+
+  useEffect(() => {
+    fetch("http://api.tvmaze.com/shows")
+      .then(res => res.json())
+      .then(data => setShows(data))
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' exact element={<Landing shows={shows}/>} />
+        <Route path='/details/:id' element={<Details shows={shows} />} />
+        <Route path='/about' exact element={<About />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
